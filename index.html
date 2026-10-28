@@ -1671,8 +1671,8 @@ const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const reduce = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 const ARTIFACT_URL = location.origin + location.pathname;
-/* WhatsApp number (country code + number, digits only) that receives saakhis sent from the form. Empty = the sender chooses who to send it to. */
-const SUBMIT_WHATSAPP = "";
+/* Email address that receives saakhis sent from the form */
+const SUBMIT_EMAIL = "imdrnps@gmail.com";
 const THEMES = ["Sewa","Courage","Honesty","Equality","Humility","Faith"];
 
 const BANDS=["#D94A2B","#7A1F2B","#2747A8","#1F8E6E","#B5612E","#0F6E8C","#5B2C83","#C2410C"];
@@ -2271,7 +2271,7 @@ function gurusPage(){
 function sendPage(){
   const d=store("sg-draft",{});
   app.innerHTML=`<div class="pad"><section class="page"><h1>Send a saakhi</h1>
-    <p class="lead">Know a saakhi that belongs on the shelf? Write it here. Every saakhi is read and checked before it's added.</p>
+    <p class="lead">Know a saakhi that belongs on the shelf? Write it here and send it to Saakhi Ghar by email. Every saakhi is read and checked before it's added.</p>
     <form class="form" id="sform" novalidate>
       <div class="field"><label for="f-title">Title of the saakhi</label><input id="f-title" maxlength="80" value="${esc(d.title||"")}"><span class="err" id="e-title"></span></div>
       <div class="field"><label for="f-guru">Which Guru or time is it about?</label><select id="f-guru"><option value="">Choose one</option>${GURUS.map(g=>`<option${d.guru===g.cat?" selected":""}>${esc(g.cat)}</option>`).join("")}<option${d.guru==="Other Sikh history"?" selected":""}>Other Sikh history</option></select><span class="err" id="e-guru"></span></div>
@@ -2294,10 +2294,13 @@ function sendPage(){
     if(!ok){ const first=document.querySelector(".err:not(:empty)"); first && first.previousElementSibling && first.parentElement.querySelector("input,select,textarea").focus(); return; }
     const src=$("f-source").value.trim(), nm=$("f-name").value.trim();
     const text=`Saakhi Ghar: a new saakhi\n\nTitle: ${t}\nGuru: ${g}${src?`\nSource: ${src}`:""}${nm?`\nFrom: ${nm}`:""}\n\n${st}`;
-    const wa=`https://wa.me/${SUBMIT_WHATSAPP}?text=${encodeURIComponent(text)}`;
-    $("ready").innerHTML=`<div class="ready"><h2>Your saakhi is ready</h2><p>${SUBMIT_WHATSAPP?"Tap below to send it to Saakhi Ghar on WhatsApp.":"Tap below to send it on WhatsApp, or copy it and send it by message or email."} Thank you for sharing!</p>
-      <div class="btns"><a class="pill wa" href="${wa}" target="_blank" rel="noopener" style="background:#1F8E5A;border-color:#1F8E5A;color:#fff">Send on WhatsApp</a><button class="pill" id="copysakhi">Copy the saakhi</button><button class="pill" id="clearsakhi">Start a new one</button></div></div>`;
+    const mail=`mailto:${SUBMIT_EMAIL}?subject=${encodeURIComponent("New saakhi: "+t)}&body=${encodeURIComponent(text)}`;
+    $("ready").innerHTML=`<div class="ready"><h2>Your saakhi is ready</h2><p>Tap <b style="font-weight:600">Send by email</b> to open your email app with the saakhi already written in. Then just press send. Thank you for sharing!</p>
+      <div class="btns"><a class="pill" href="${mail}" style="background:var(--chitta);border-color:var(--chitta);color:#141414">Send by email</a><button class="pill" id="copysakhi">Copy the saakhi</button><button class="pill" id="clearsakhi">Start a new one</button></div>
+      <p style="margin:14px 0 6px;font-size:.95rem">If your email app doesn't open, or the saakhi looks cut off, copy the saakhi and email it to:</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><span id="mailaddr" style="user-select:all;font-family:var(--body);font-size:1.05rem;color:var(--kesri);word-break:break-all">${SUBMIT_EMAIL}</span><button class="pill" id="copymail" style="min-height:38px;padding:4px 14px;font-size:.9rem">Copy address</button></div></div>`;
     $("copysakhi").onclick=()=>copyText(text,"Saakhi copied");
+    $("copymail").onclick=()=>copyText(SUBMIT_EMAIL,"Email address copied");
     $("clearsakhi").onclick=()=>{ keep("sg-draft",{}); sendPage(); };
     $("ready").scrollIntoView({behavior:reduce()?"auto":"smooth",block:"start"});
   };
