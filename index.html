@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Saakhi Ghar: Sikh stories for children and young readers, with read-aloud, quizzes, a timeline and a map.">
+<meta name="description" content="Saakhi Ghar by @readbysingh: Sikh stories for children and young readers, with read-aloud, quizzes, a timeline and a map.">
 <meta name="theme-color" content="#0A0A0B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A0A0B'/%3E%3Crect x='12' y='14' width='10' height='38' rx='2' fill='%232747A8'/%3E%3Crect x='25' y='10' width='10' height='42' rx='2' fill='%23F08A1C'/%3E%3Crect x='38' y='16' width='10' height='36' rx='2' fill='%231F8E6E'/%3E%3Crect x='8' y='52' width='48' height='4' rx='2' fill='%23EFE6D2'/%3E%3C/svg%3E">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -183,6 +183,14 @@ footer p{max-width:70ch;margin:0 auto 6px}
 .book .plate.lw{font-size:.6rem;letter-spacing:0}
 .book .plate b.xl{font-size:.82em;letter-spacing:-.02em}
 @media (min-width:720px){.book .plate.lw{font-size:.74rem}}
+.byline{display:inline-block;margin-top:10px;color:var(--muted);letter-spacing:.16em;font-size:.92rem;text-decoration:none;padding:2px 0}
+.byline:hover{color:var(--kesri)}
+.cover .top{flex-direction:column;gap:1px;align-items:flex-start}
+.cover .top span{white-space:nowrap}
+.cover .top span:first-child{font-size:.7rem;letter-spacing:.1em}
+.cover .top .by{font-size:.58rem;letter-spacing:.04em;opacity:.75}
+@media (min-width:720px){.cover .top span:first-child{font-size:.78rem;letter-spacing:.14em}.cover .top .by{font-size:.66rem}}
+footer a{color:var(--kesri);text-decoration:none}
 /* Bottom navigation */
 body{padding-bottom:calc(66px + env(safe-area-inset-bottom, 0px))}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(14,14,16,.96);border-top:1.5px solid var(--line);display:flex;justify-content:space-around;padding:6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px));backdrop-filter:blur(8px)}
@@ -274,14 +282,30 @@ body{padding-bottom:calc(66px + env(safe-area-inset-bottom, 0px))}
 .page .lead{font-family:var(--body);color:#D9D3C4;font-size:1.05rem;max-width:56ch;margin:12px 0 0}
 
 /* Timeline */
-.tl{position:relative;margin-top:26px;padding-left:34px}
-.tl::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:3px;border-radius:2px;background:linear-gradient(var(--kesri),#2747A8)}
-.tl .ev{position:relative;margin-bottom:14px}
-.tl .ev::before{content:"";position:absolute;left:-29px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--gc,var(--kesri));box-shadow:0 0 0 3px var(--bg)}
-.tl .yr{font-family:var(--spine);font-size:1.05rem;color:var(--muted);letter-spacing:.04em}
-.tl .mile{padding:6px 0 4px}
-.tl .mile .t{font-family:var(--hand);font-size:1.6rem;line-height:1.05}
-.tl .mile.big::before{width:19px;height:19px;left:-32px;top:6px}
+.tl{position:relative;margin-top:30px;padding-left:34px}
+.tl::before{content:"";position:absolute;left:12px;top:10px;bottom:10px;width:2px;border-radius:2px;background:linear-gradient(var(--kesri),#2747A8 60%,#E9B021)}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev::before{content:"";position:absolute;left:-27px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--gc,var(--kesri));box-shadow:0 0 0 3px var(--bg)}
+.tl .yr{display:block;font-family:var(--spine);font-size:.98rem;color:var(--muted);letter-spacing:.04em;margin-bottom:2px}
+.tl .gm{position:relative;margin:38px 0 22px;padding:18px 18px 20px;border-radius:20px;
+  background:var(--panel);background:linear-gradient(135deg,color-mix(in srgb,var(--gc) 62%,#0A0A0B),color-mix(in srgb,var(--gc) 20%,#0A0A0B));
+  border:1.5px solid color-mix(in srgb,var(--gc) 70%,#ffffff 8%);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--gc) 80%,transparent)}
+.tl .gm:first-child{margin-top:4px}
+.tl .gm::before{left:-35px;top:22px;width:24px;height:24px;background:var(--gc);box-shadow:0 0 0 4px var(--bg),0 0 0 6px color-mix(in srgb,var(--gc) 55%,transparent),0 0 22px 4px color-mix(in srgb,var(--gc) 60%,transparent)}
+.tl .gm .clip{position:absolute;inset:0;overflow:hidden;border-radius:inherit;pointer-events:none}
+.tl .gm > div{position:relative}
+.tl .gm .wm{position:absolute;right:-6px;bottom:-26px;font-family:var(--spine);font-size:7.5rem;line-height:1;color:#fff;opacity:.09;pointer-events:none}
+.tl .gm .wm.g{font-family:var(--gur);font-size:6.5rem;bottom:-14px}
+.tl .gm .top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tl .gm .big{font-family:var(--spine);font-size:2.5rem;line-height:1;color:#fff}
+.tl .gm .badge{border:1.5px solid rgba(255,255,255,.45);border-radius:999px;padding:3px 12px;letter-spacing:.14em;font-size:.82rem;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.18)}
+.tl .gm .t{position:relative;font-family:var(--hand);font-size:clamp(1.7rem,6.4vw,2.2rem);line-height:1.05;margin-top:10px;color:#fff;text-wrap:balance}
+.tl .gm .gn{position:relative;font-family:var(--gur);font-size:1.15rem;color:#FFD9A6;margin-top:6px}
+.tl .gm .life{position:relative;color:rgba(255,255,255,.75);letter-spacing:.1em;font-size:.9rem;margin-top:2px}
+.tl .gm.special{--gc:#E9B021;background:linear-gradient(135deg,#3A2608,#1A1206);border-color:#8A5A12}
+.tl .gm.special .big,.tl .gm.special .t{color:#F7D27A}
+.tl .gm.special .badge{border-color:#8A5A12;color:#F2C14E}
+.tl .gm.special .kh{position:absolute;right:12px;bottom:-6px;width:96px;height:96px;opacity:.18}
 a.sk{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:center;text-decoration:none;color:var(--ink);background:var(--panel);border:1.5px solid var(--line);border-radius:14px;padding:8px;margin-top:4px}
 a.sk .th{position:relative;width:64px;aspect-ratio:5/4;border-radius:8px;overflow:hidden}
 a.sk .th svg{position:absolute;inset:0;width:100%;height:100%}
@@ -301,20 +325,30 @@ a.sk small{color:var(--muted);letter-spacing:.06em}
 .placelist .sub{color:var(--muted);letter-spacing:.08em;margin:0 0 4px}
 
 /* Gurus */
-.gurus{display:grid;gap:14px;margin-top:22px}
-.gcard{border:1.5px solid var(--line);border-radius:18px;background:var(--panel);overflow:hidden;display:grid;grid-template-columns:10px minmax(0,1fr)}
-.gcard .band{background:var(--gc)}
-.gcard .in{padding:16px 18px}
-.gcard .ord{letter-spacing:.18em;color:var(--muted);font-size:.88rem;text-transform:uppercase}
-.gcard h2{font-family:var(--hand);font-weight:400;font-size:2rem;line-height:1;margin:2px 0 0}
-.gcard .gn{font-family:var(--gur);color:var(--kesri);font-size:1.15rem}
-.gcard dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:10px 0;font-family:var(--body);font-size:.98rem}
-.gcard dt{color:var(--muted);font-family:var(--label);letter-spacing:.08em}
-.gcard dd{margin:0}
-.gcard ul{margin:0 0 12px;padding-left:18px;font-family:var(--body);font-size:1rem;line-height:1.55}
-.gcard .soon{color:var(--muted);letter-spacing:.08em;font-size:.92rem}
-.gcard.granth{grid-template-columns:1fr;background:#2A1C0B;border-color:#5A3A12}
-.gcard.granth .in p{font-family:var(--body);margin:8px 0 0}
+.gurus{display:grid;gap:24px;margin-top:28px}
+.gcard{border:1.5px solid var(--line);border-radius:22px;background:var(--panel);overflow:hidden;display:flex;flex-direction:column}
+.gcard .gh{position:relative;overflow:hidden;padding:22px 22px 20px;background:var(--panel);background:linear-gradient(135deg,color-mix(in srgb,var(--gc) 64%,#0A0A0B),color-mix(in srgb,var(--gc) 24%,#0A0A0B))}
+.gcard .gh .num{position:absolute;right:10px;top:-14px;font-family:var(--spine);font-size:7rem;line-height:1;color:#fff;opacity:.12;pointer-events:none}
+.gcard .ord{position:relative;letter-spacing:.18em;color:rgba(255,255,255,.8);font-size:.86rem;text-transform:uppercase}
+.gcard h2{position:relative;font-family:var(--hand);font-weight:400;font-size:clamp(2rem,7.5vw,2.5rem);line-height:1;margin:8px 0 0;color:#fff}
+.gcard .gn{position:relative;font-family:var(--gur);color:#FFD9A6;font-size:1.2rem;margin-top:8px}
+.gcard .gb{padding:20px 22px 24px;display:flex;flex-direction:column;gap:18px;flex:1}
+.gcard .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0}
+.gcard .facts div{min-width:0}
+.gcard .facts dt{color:var(--muted);font-family:var(--label);letter-spacing:.14em;font-size:.82rem;text-transform:uppercase;margin-bottom:4px}
+.gcard .facts dd{margin:0;font-family:var(--body);font-size:1rem;line-height:1.45}
+.gcard .facts .wide{grid-column:1/-1}
+.gcard h3{font-family:var(--label);font-weight:400;letter-spacing:.16em;font-size:.86rem;text-transform:uppercase;color:var(--kesri);margin:0 0 -6px;padding-top:16px;border-top:1.5px solid var(--line)}
+.gcard ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-family:var(--body);font-size:1.02rem;line-height:1.6}
+.gcard li{position:relative;padding-left:22px}
+.gcard li::before{content:"";position:absolute;left:2px;top:.62em;width:9px;height:9px;border-radius:50%;background:var(--kesri);background:color-mix(in srgb,var(--gc) 55%,#ffffff);box-shadow:0 0 0 3px color-mix(in srgb,var(--gc) 35%,transparent)}
+.gcard .gb .pill{align-self:flex-start;margin-top:auto}
+.gcard .soon{color:var(--muted);letter-spacing:.08em;font-size:.92rem;margin-top:auto}
+.gcard.granth{--gc:#E9B021;border-color:#5A3A12}
+.gcard.granth .gh{background:linear-gradient(135deg,#4A3008,#1A1206)}
+.gcard.granth .gh h2{color:#F7D27A}
+.gcard.granth .kh{position:absolute;right:14px;top:10px;width:92px;height:92px;opacity:.2}
+.gcard.granth .gb p{font-family:var(--body);font-size:1.05rem;line-height:1.65;margin:0}
 
 /* Send a saakhi */
 .form{margin-top:22px;display:grid;gap:16px}
@@ -335,6 +369,7 @@ a.sk small{color:var(--muted);letter-spacing:.06em}
 @media (min-width:720px){
   .gurus{grid-template-columns:1fr 1fr}
   .gcard.granth{grid-column:1/-1}
+  .gurus{gap:26px}
   .sharesheet .btns,.ready .btns{grid-template-columns:repeat(3,1fr)}
 }
 @media (prefers-reduced-motion:reduce){.book.today{animation:none}.listenbar .bars i{animation:none;height:10px}.badgewin,.scrim,.sheet{animation:none}}
@@ -350,7 +385,7 @@ a.sk small{color:var(--muted);letter-spacing:.06em}
 </nav>
 <footer class="pad">
   <p>Saakhis retold in simple English for children and young readers. Details can differ between historical sources; please read alongside trusted books or with your sangat.</p>
-  <p>Saakhi Ghar</p>
+  <p>Saakhi Ghar · by <a href="https://www.instagram.com/readbysingh/" target="_blank" rel="noopener">@readbysingh</a></p>
 </footer>
 
 <script>
@@ -1789,7 +1824,7 @@ function spine(s){
   return `<button class="book${s.t?" light":""}${state.open===s.id?" out":""}${today?" today":""}" data-id="${s.id}" style="${vars(s)}" aria-label="${esc(s.title)}, ${esc(s.cat)}${today?", today's saakhi":""}">${spineInner(s)}</button>`;
 }
 function coverInner(s){
-  return `<div class="top"><span>SAAKHI GHAR</span></div>
+  return `<div class="top"><span>SAAKHI GHAR</span><span class="by">BY @READBYSINGH</span></div>
     <h3>${esc(s.title)}</h3>
     <div class="art">${artFor(s)}</div>
     <div class="foot">${esc(s.cat.toUpperCase())}</div>`;
@@ -1833,6 +1868,7 @@ function home(){
   <div class="pad"><div class="wrap">
     <header class="mast">
       <h1 class="logo">Saakhi Ghar<span class="gur" lang="pa">ਸਾਖੀ ਘਰ · Sikh stories for young readers</span></h1>
+      <a class="byline" href="https://www.instagram.com/readbysingh/" target="_blank" rel="noopener">by @readbysingh</a>
       <div class="bar">
         <div class="stats"><span class="count">${STORIES.length} saakhis</span>${badgeSet.size?`<span class="badgecount" title="Khanda badges earned">${khanda("#F08A1C")}${badgeSet.size}</span>`:""}</div>
         <button class="pill" id="surprise">Surprise me</button>
@@ -1905,21 +1941,25 @@ let driftStop=null;
 function autoDrift(sc){
   if(driftStop) driftStop();
   if(reduce()) return;
-  let pos=sc.scrollLeft, dir=1, pauseUntil=performance.now()+1800, hovering=false, raf=0, alive=true;
+  const SPEED=26; /* pixels per second, the same on every screen */
+  let pos=sc.scrollLeft, dir=1, pauseUntil=performance.now()+1800, hovering=false, raf=0, alive=true, last=0;
   const pause=ms=>{ pauseUntil=performance.now()+ms; pos=sc.scrollLeft; };
-  ["touchstart","pointerdown","wheel"].forEach(ev=>sc.addEventListener(ev,()=>pause(5000),{passive:true}));
-  sc.addEventListener("scroll",()=>{ if(Math.abs(sc.scrollLeft-pos)>3) pause(5000); },{passive:true});
-  sc.addEventListener("mouseenter",()=>{hovering=true});
-  sc.addEventListener("mouseleave",()=>{hovering=false; pause(1500)});
+  ["touchstart","wheel"].forEach(ev=>sc.addEventListener(ev,()=>pause(5000),{passive:true}));
+  sc.addEventListener("pointerdown",e=>pause(5000),{passive:true});
+  sc.addEventListener("scroll",()=>{ if(Math.abs(sc.scrollLeft-pos)>4) pause(5000); },{passive:true});
+  /* Only a real mouse counts as hovering; taps on phones must not freeze the shelf */
+  sc.addEventListener("pointerenter",e=>{ if(e.pointerType==="mouse") hovering=true; });
+  sc.addEventListener("pointerleave",e=>{ if(e.pointerType==="mouse"){ hovering=false; pause(1500); } });
   const tick=t=>{
     if(!alive) return;
+    const dt=last?Math.min(t-last,100):16; last=t;
     const max=sc.scrollWidth-sc.clientWidth;
     if(max>0 && !hovering && !state.open && !state.busy && t>pauseUntil && !document.hidden){
-      pos+=dir*0.45;
+      pos+=dir*SPEED*dt/1000;
       if(pos>=max){pos=max;dir=-1;pauseUntil=t+1500}
       if(pos<=0){pos=0;dir=1;pauseUntil=t+1500}
       sc.scrollLeft=pos;
-    } else if(hovering || state.open) { pos=sc.scrollLeft; }
+    } else if(hovering || state.open || state.busy) { pos=sc.scrollLeft; }
     raf=requestAnimationFrame(tick);
   };
   raf=requestAnimationFrame(tick);
@@ -2172,12 +2212,12 @@ async function makeCard(s){
   x.fillStyle="#F08A1C"; x.font="700 44px 'Mukta Mahee', sans-serif"; x.fillText(s.gur,80,y+74);
   if("letterSpacing" in x) x.letterSpacing="4px";
   x.fillStyle="#A8A396"; x.font="34px 'Patrick Hand SC', sans-serif"; x.fillText(s.cat.toUpperCase(),80,y+138);
-  x.fillStyle="#F3EEE2"; x.fillText("READ IT ON SAAKHI GHAR",80,H-64);
+  x.fillStyle="#F3EEE2"; x.fillText("READ IT ON SAAKHI GHAR",80,H-64); x.textAlign="right"; x.fillStyle="#F08A1C"; x.fillText("@READBYSINGH",W-80,H-64); x.textAlign="left";
   return new Promise((res,rej)=>cv.toBlob(b=>b?res(b):rej(new Error("no image")),"image/png"));
 }
 async function shareSheet(s){
   const url=storyLink(s);
-  const msg=`${s.title}: a saakhi of ${s.cat}, on Saakhi Ghar\n${url}`;
+  const msg=`${s.title}: a saakhi of ${s.cat}, on Saakhi Ghar by @readbysingh\n${url}`;
   const sh=openSheet(`<div class="sharesheet"><h3>Share this saakhi</h3>
     <img alt="Share card for ${esc(s.title)}" id="shareimg" hidden><p class="note" id="sharewait">Making the share card…</p>
     <div class="btns"><a class="pill wa" href="https://wa.me/?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Send on WhatsApp</a>
@@ -2203,7 +2243,18 @@ function timeline(){
   const evs=[...MILES.map(m=>({y:m[0],m})), ...STORIES.map(s=>({y:s.year,s}))].sort((a,b)=>a.y-b.y || (a.m?-1:1));
   app.innerHTML=`<div class="pad"><section class="page"><h1>Timeline</h1><p class="lead">From the birth of Guru Nanak Dev Ji in 1469 to 1708, when Guru Granth Sahib Ji became the eternal Guru. Tap a saakhi to read it. Years marked "c." are approximate.</p>
     <div class="tl">${evs.map(e=>{
-      if(e.m){ const g=GURU_BY[e.m[2]]; return `<div class="ev mile${e.m[3]?" big":""}" style="--gc:${g?g.c:"#F08A1C"}"><span class="yr">${e.y}</span><div class="t">${esc(e.m[1])}</div></div>`; }
+      if(e.m){
+        const [y,text,cat]=e.m, g=GURU_BY[cat], guru=/becomes the \d/.test(text)||/^Guru .* is born$/.test(text);
+        if(guru){
+          const badge=/is born/.test(text)?"Birth":`${g.n} Guru`;
+          return `<div class="ev gm" style="--gc:${g.c}"><span class="clip" aria-hidden="true"><span class="wm">${parseInt(g.n)}</span></span>
+            <div class="top"><span class="big">${y}</span><span class="badge">${badge}</span></div>
+            <div class="t">${esc(text)}</div><div class="gn" lang="pa">${g.gur}</div><div class="life">${g.life}</div></div>`;
+        }
+        return `<div class="ev gm special"><span class="clip" aria-hidden="true"><span class="kh">${khanda("#F2C14E")}</span></span>
+          <div class="top"><span class="big">${y}</span><span class="badge">Milestone</span></div>
+          <div class="t">${esc(text)}</div></div>`;
+      }
       const s=e.s, g=GURU_BY[s.cat]; return `<div class="ev" style="--gc:${g?g.c:s.c}"><span class="yr">${s.approx?"c. ":""}${s.year}</span>${miniCard(s)}</div>`;
     }).join("")}</div></section></div>`;
 }
@@ -2257,13 +2308,16 @@ function mapPage(){
 /* ---------- Meet the Gurus ---------- */
 function gurusPage(){
   app.innerHTML=`<div class="pad"><section class="page"><h1>Meet the Gurus</h1><p class="lead">The ten Sikh Gurus, from Guru Nanak Dev Ji to Guru Gobind Singh Ji, and the eternal Guru, Sri Guru Granth Sahib Ji.</p>
-    <div class="gurus">${GURUS.map(g=>{ const n=STORIES.filter(s=>s.cat===g.cat).length; return `<article class="gcard" style="--gc:${g.c}"><div class="band"></div><div class="in">
-      <div class="ord">${g.n} Guru</div><h2>${esc(g.cat)}</h2><div class="gn" lang="pa">${g.gur}</div>
-      <dl><dt>Lived</dt><dd>${g.life}</dd><dt>Born</dt><dd>${esc(g.born)}</dd><dt>Guru</dt><dd>${esc(g.guru)}</dd></dl>
-      <ul>${g.pts.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
-      ${n?`<button class="pill" data-g="${esc(g.cat)}">Read ${n} ${n===1?"saakhi":"saakhis"} →</button>`:`<span class="soon">Saakhis coming soon</span>`}
-    </div></article>`; }).join("")}
-    <article class="gcard granth"><div class="in"><div class="ord">The eternal Guru</div><h2>Sri Guru Granth Sahib Ji</h2><div class="gn" lang="pa">${GRANTH.gur}</div><p>${esc(GRANTH.text)}</p></div></article>
+    <div class="gurus">${GURUS.map(g=>{ const n=STORIES.filter(s=>s.cat===g.cat).length; return `<article class="gcard" style="--gc:${g.c}">
+      <header class="gh"><span class="num" aria-hidden="true">${parseInt(g.n)}</span><div class="ord">${g.n} Guru</div><h2>${esc(g.cat)}</h2><div class="gn" lang="pa">${g.gur}</div></header>
+      <div class="gb">
+        <dl class="facts"><div><dt>Lived</dt><dd>${g.life}</dd></div><div><dt>Guru</dt><dd>${esc(g.guru.replace(/^Guru from /,""))}</dd></div><div class="wide"><dt>Born</dt><dd>${esc(g.born)}</dd></div></dl>
+        <h3>Remembered for</h3>
+        <ul>${g.pts.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
+        ${n?`<button class="pill" data-g="${esc(g.cat)}">Read ${n} ${n===1?"saakhi":"saakhis"} →</button>`:`<span class="soon">Saakhis coming soon</span>`}
+      </div></article>`; }).join("")}
+    <article class="gcard granth"><header class="gh"><span class="kh" aria-hidden="true">${khanda("#F2C14E")}</span><div class="ord">The eternal Guru</div><h2>Sri Guru Granth Sahib Ji</h2><div class="gn" lang="pa">${GRANTH.gur}</div></header>
+      <div class="gb"><p>${esc(GRANTH.text)}</p></div></article>
     </div></section></div>`;
   app.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{ Object.assign(state,{cat:b.dataset.g,theme:"All",age:"All",fav:false,q:"",open:null}); location.hash="shelf"; });
 }
