@@ -220,7 +220,8 @@ body{padding-bottom:calc(66px + env(safe-area-inset-bottom, 0px))}
 .listenbar .bars i:nth-child(2){animation-delay:.15s}.listenbar .bars i:nth-child(3){animation-delay:.3s}
 @keyframes bar{0%,100%{height:4px}50%{height:16px}}
 .story p.speaking{background:rgba(240,138,28,.12);border-radius:8px;box-shadow:0 0 0 6px rgba(240,138,28,.12)}
-.w{font:inherit;color:inherit;background:none;border:0;padding:0;border-bottom:2px dotted var(--kesri);cursor:pointer}
+.w{background:rgba(240,138,28,.17);color:inherit;border-radius:4px;padding:0 3px;margin:0 -1px;cursor:pointer;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background .15s}
+.w:hover,.w:focus-visible{background:rgba(240,138,28,.32)}
 .wordgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 .wcard{border:1.5px solid var(--line);border-radius:14px;background:#1B1B1E;padding:12px 10px;text-align:center;display:flex;flex-direction:column;gap:2px;min-height:96px;justify-content:center}
 .wcard .gw{font-family:var(--gur);font-size:1.45rem;color:var(--kesri);line-height:1.3}
@@ -251,16 +252,16 @@ body{padding-bottom:calc(66px + env(safe-area-inset-bottom, 0px))}
 /* Bottom sheet (word cards, sharing) */
 .scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:50;display:flex;align-items:flex-end;justify-content:center;animation:fade .2s ease both}
 @keyframes fade{from{opacity:0}}
-.sheet{width:min(560px,100%);max-height:88vh;overflow:auto;background:#17171A;border:1.5px solid var(--line);border-bottom:0;border-radius:22px 22px 0 0;padding:18px max(18px, env(safe-area-inset-right, 0px)) calc(22px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px));animation:up .28s cubic-bezier(.2,.9,.3,1) both}
+.sheet{width:min(560px,100%);max-height:88vh;overflow:auto;background:#17171A;border:1.5px solid var(--line);border-bottom:0;border-radius:22px 22px 0 0;padding:18px max(18px, env(safe-area-inset-right, 0px)) calc(22px + env(safe-area-inset-bottom, 0px)) max(18px, env(safe-area-inset-left, 0px));animation:up .28s cubic-bezier(.2,.9,.3,1) both;position:relative}
 @keyframes up{from{transform:translateY(40px);opacity:.4}}
 .sheet .grab{width:44px;height:5px;border-radius:3px;background:var(--line);margin:0 auto 14px}
-.sheet .close{float:right;border:1.5px solid var(--line);background:none;border-radius:999px;min-height:40px;padding:4px 14px;letter-spacing:.1em}
+.sheet .close{position:absolute;top:14px;right:max(16px, env(safe-area-inset-right, 0px));border:1.5px solid var(--line);background:none;border-radius:999px;min-height:40px;padding:4px 14px;letter-spacing:.1em}
 .wordsheet{text-align:center;padding-top:8px}
 .wordsheet .big{font-family:var(--gur);font-size:3.4rem;color:var(--kesri);line-height:1.3;margin-top:8px}
 .wordsheet .en{font-family:var(--hand);font-size:2rem;line-height:1}
 .wordsheet .say{margin:12px auto 0;display:inline-flex;gap:8px;align-items:center;border:1.5px dashed var(--line);border-radius:999px;padding:6px 16px;letter-spacing:.1em}
 .wordsheet .mean{font-family:var(--body);font-size:1.08rem;color:#D9D3C4;max-width:40ch;margin:16px auto 6px}
-.sharesheet h3{font-family:var(--hand);font-weight:400;font-size:2rem;margin:0 0 10px;line-height:1}
+.sharesheet h3{font-family:var(--hand);font-weight:400;font-size:2rem;margin:0 0 10px;line-height:1;padding-right:96px}
 .sharesheet img{display:block;width:min(300px,80%);margin:6px auto 14px;border-radius:12px;border:1.5px solid var(--line)}
 .sharesheet .btns{display:grid;gap:8px}
 .sharesheet .btns a,.sharesheet .btns button{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--ink)}
@@ -2031,7 +2032,7 @@ function linkWords(s){
     const re=new RegExp("(^|[^A-Za-z\\u0002])("+t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")(?![A-Za-z])","i");
     txt=txt.replace(re,(m,pre,w)=>{ marks.push([t,w]); return pre+"\u0002"+(marks.length-1)+"\u0003"; });
   });
-  txt=txt.replace(/\u0002(\d+)\u0003/g,(m,i)=>`<button class="w" data-w="${esc(marks[i][0])}">${marks[i][1]}</button>`);
+  txt=txt.replace(/\u0002(\d+)\u0003/g,(m,i)=>`<span class="w" role="button" tabindex="0" data-w="${esc(marks[i][0])}">${marks[i][1]}</span>`);
   return txt.split("\u0001").map(p=>`<p>${p}</p>`).join("");
 }
 function wordSheet(s, term){
@@ -2101,7 +2102,7 @@ function reader(s){
   document.getElementById("smaller").onclick=()=>setSize(Math.max(.95, +(cur()-.1).toFixed(2)));
   document.getElementById("bigger").onclick=()=>setSize(Math.min(1.6, +(cur()+.1).toFixed(2)));
   document.getElementById("readDone").onclick=()=>{ readSet.add(s.id); saveRead(); toast("Well done! Marked as read"); document.getElementById("readDone").textContent="Marked as read ✓"; };
-  app.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>wordSheet(s,b.dataset.w));
+  app.querySelectorAll("[data-w]").forEach(b=>{ b.onclick=()=>wordSheet(s,b.dataset.w); if(b.tagName==="SPAN") b.onkeydown=e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); wordSheet(s,b.dataset.w); } }; });
   document.getElementById("sharebtn").onclick=()=>shareSheet(s);
   document.getElementById("favbtn").onclick=e=>{ const on=toggleFav(s); const b=e.currentTarget; b.classList.toggle("on",on); b.setAttribute("aria-pressed",on); b.innerHTML=`${HEART(on)}<span>${on?"Favourite":"Add to favourites"}</span>`; };
   wireQuiz(s);
